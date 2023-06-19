@@ -127,6 +127,20 @@ class App extends React.Component {
     }
   };
 
+  // FUNCTION FOR : TOGGLE SONG PLAY AND PAUSE
+  togglePlayPause = () => {
+    if (this.state.currentMenu === -2) {
+      return;
+    }
+    if (this.state.playing === true) {
+      this.setState({ playing: false });
+      this.state.audio.pause();
+    } else {
+      this.setState({ playing: true });
+      this.state.audio.play();
+    }
+  };
+
   
 
   // FUNCTION FOR : RENDERING APP
