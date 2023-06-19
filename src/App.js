@@ -174,6 +174,44 @@ class App extends React.Component {
     }
   };
 
+  // FUNCTION FOR : CHANGE THE THEME OF iPod BODY
+  setTheme = (id) => {
+    let theme = "";
+    if (id === 0) {
+      theme = "#f0f0f0";
+    } else if (id === 1) {
+      theme = "#555d50"; //black
+    } else if (id === 2) {
+      theme = "#ffcc00";
+    } else if (id === 3) {
+      theme = "#D1CDDA";
+    } else if (id === 4) {
+      theme = "#c4aead";
+    }
+    this.setState({ theme: theme, noty: true, notifyText: "Theme Changed" }); //Notification
+    return;
+  };
+
+  // FUNCTION FOR : CHANGE COLOR OF WHEEL
+  setWheelColor = (id) => {
+    let wheelColor = "";
+    if (id === 0) {
+      wheelColor = "#212121";
+    } else if (id === 1) {
+      wheelColor = "white";
+    } else if (id === 2) {
+      wheelColor = "#3E2723";
+    } else if (id === 3) {
+      wheelColor = "#3D5AFE";
+    }
+    this.setState({
+      wheelColor: wheelColor,
+      noty: true,
+      notifyText: "Wheel Color Changed",
+    });
+    return;
+  };
+
   
 
   // FUNCTION FOR : RENDERING APP
