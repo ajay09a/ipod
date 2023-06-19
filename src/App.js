@@ -261,10 +261,106 @@ class App extends React.Component {
     }
   };
 
-  
+  // FUNCTION FOR : CHANGE MENU FORWARD on PRESS OF CENTER BUTTON using NAVIGATION STACK
+  changeMenuForward = (id, fromMenu) => {
+    const navigationStack = this.state.navigationStack.slice();
+
+    if (
+      fromMenu !== -2 &&
+      fromMenu !== -1 &&
+      fromMenu !== 1 &&
+      fromMenu !== 4 &&
+      fromMenu !== 3 &&
+      fromMenu !== 8 &&
+      fromMenu !== 9 &&
+      fromMenu !== 0 &&
+      fromMenu !== 7 &&
+      fromMenu !== 10
+    ) {
+      return;
+    }
+
+    if (fromMenu === -2) {
+      navigationStack.push(this.state.currentMenu);
+      this.setState({
+        currentMenu: -1,
+        navigationStack: navigationStack,
+        active: 0,
+      });
+      return;
+    }
+
+    if (fromMenu === -1) {
+      navigationStack.push(this.state.currentMenu);
+      this.setState({
+        currentMenu: id,
+        navigationStack: navigationStack,
+        active: 0,
+      });
+      return;
+    }
+
+    if (fromMenu === 7 || fromMenu === 0) {
+      this.togglePlayPause();
+      return;
+    }
+
+    if (fromMenu === 8) {
+      this.setTheme(id);
+      return;
+    }
+
+    if (fromMenu === 9) {
+      this.setWheelColor(id);
+      return;
+    }
+
+    if (fromMenu === 10) {
+      this.setWallpaper(id);
+      return;
+    }
+
+    navigationStack.push(this.state.currentMenu);
+
+    if (fromMenu === 4) {
+      this.chagePlayingSongFromMusicMenu(id, navigationStack, fromMenu);
+      return;
+    }
+
+    const currentMenuID = this.state.menuMapping[fromMenu][id];
+    this.setState({
+      currentMenu: currentMenuID,
+      navigationStack: navigationStack,
+      active: 0,
+    });
+  };
+
+  // FUNCTION FOR : SET NOTIFICATION AS FALSE AFTER SENDING NOTIFICATION
+  setNoty = () => {
+    this.setState({ noty: false });
+    return;
+  };
 
   // FUNCTION FOR : RENDERING APP
   render() {
+    const {
+      audio,
+      active,
+      currentMenu,
+      menuItems,
+      musicItems,
+      songItems,
+      playing,
+      songIndex,
+      theme,
+      songUrl,
+      songImgUrl,
+      wheelColor,
+      wallpaper,
+      wallpaperItems,
+      noty,
+      notifyText,
+    } = this.state;
     return (
       <div className="App">
         
