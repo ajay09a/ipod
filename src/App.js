@@ -141,6 +141,39 @@ class App extends React.Component {
     }
   };
 
+  // FUNCTION FOR : UPDATE ACTIVE MENU WHILE ROTATING ON THE TRACK-WHEEL
+  updateActiveMenu = (direction, menu) => {
+    if (
+      menu !== -1 &&
+      menu !== 1 &&
+      menu !== 4 &&
+      menu !== 8 &&
+      menu !== 3 &&
+      menu !== 9 &&
+      menu !== 10
+    ) {
+      return;
+    }
+    let min = 0;
+    let max = 0;
+
+    max = this.state.lengthMenuKey[menu];
+
+    if (direction === 1) {
+      if (this.state.active >= max) {
+        this.setState({ active: min });
+      } else {
+        this.setState({ active: this.state.active + 1 });
+      }
+    } else {
+      if (this.state.active <= min) {
+        this.setState({ active: max });
+      } else {
+        this.setState({ active: this.state.active - 1 });
+      }
+    }
+  };
+
   
 
   // FUNCTION FOR : RENDERING APP
