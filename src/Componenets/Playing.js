@@ -10,7 +10,7 @@ export class Playing extends Component {
     this.intervalId = "";
   }
 
-  // logic for updating the current music playbak
+  // logic for updating the current music playback
   componentDidMount() {
     const { audio } = this.props;
     this.setState({ currentTime: audio.currentTime });
