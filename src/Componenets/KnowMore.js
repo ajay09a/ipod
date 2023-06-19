@@ -1,5 +1,5 @@
 import React from 'react';
-// import "../css/KnowMore.css"
+import "../assets/css/knowMore.css"
 
 // Renders themes menu
 class KnowMore extends React.Component {
