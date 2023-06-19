@@ -88,6 +88,45 @@ class App extends React.Component {
     }
   };
 
+  // FUNCTION FOR : ON LONG PRESS OF FORWARD BUTTON TRACKS ARE SEEKED BACKWARD
+  seekSongReverse = (e) => {
+    if (this.state.currentMenu === -2) {
+      return;
+    }
+    if (this.state.playing === false) {
+      return;
+    }
+    console.log(e.detail.interval);
+    if (e.detail.interval < 250) {
+      this.state.audio.pause();
+      let songIndex = this.state.songIndex;
+      if (songIndex === 0) {
+        songIndex = this.state.songItemsUrl.length - 1;
+      } else {
+        songIndex--;
+      }
+      const songUrl = this.state.songItemsUrl[songIndex];
+      const songImgUrl = this.state.songImgItemsUrl[songIndex];
+      this.setState(
+        {
+          songIndex: songIndex,
+          songImgUrl: songImgUrl,
+          songUrl: songUrl,
+          audio: new Audio(songUrl),
+        },
+        () => {
+          this.state.audio.play();
+        }
+      );
+    } else if (e.detail.interval > 250 && e.detail.interval < 10000) {
+      const interval = e.detail.interval / 100;
+      this.setState((prevState) => {
+        prevState.audio.currentTime -= interval;
+        return prevState;
+      });
+    }
+  };
+
   
 
   // FUNCTION FOR : RENDERING APP
