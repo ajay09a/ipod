@@ -1,4 +1,5 @@
 import React from "react";
+import './assets/css/app.css'
 
 // Import iPod body file
 import Case from "./Componenets/Case";
