@@ -212,6 +212,55 @@ class App extends React.Component {
     return;
   };
 
+  // FUNCTION FOR : SET WALLPAPER OF iPod Body
+  setWallpaper = (id) => {
+    this.setState({
+      wallpaper: id,
+      noty: true,
+      notifyText: "Wallpaper Changed",
+    });
+    return;
+  };
+
+  // FUNCTION FOR : CHANGE PLAYING MUSIC
+  chagePlayingSongFromMusicMenu = (id, navigationStack) => {
+    const songUrl = this.state.songItemsUrl[id];
+    const songImgUrl = this.state.songImgItemsUrl[id];
+    this.state.audio.pause();
+    this.setState(
+      {
+        currentMenu: 7,
+        songUrl: songUrl,
+        navigationStack: navigationStack,
+        active: 0,
+        playing: true,
+        songIndex: id,
+        audio: new Audio(songUrl),
+        songImgUrl: songImgUrl,
+      },
+      () => {
+        this.state.audio.play();
+      }
+    );
+    return;
+  };
+
+  // FUNCTION FOR : CHANGE MENU BACKWARDS on PRESS OF CENTER BUTTON
+  changeMenuBackward = () => {
+    const navigationStack = this.state.navigationStack.slice();
+    if (this.state.currentMenu === -2) {
+      return;
+    } else {
+      const prevId = navigationStack.pop();
+      this.setState({
+        currentMenu: prevId,
+        navigationStack: navigationStack,
+        active: 0,
+      });
+      return;
+    }
+  };
+
   
 
   // FUNCTION FOR : RENDERING APP
