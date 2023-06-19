@@ -18,7 +18,48 @@ import Wallpaper2 from "./assets/cover/wallpaper1.jpg";
 import Wallpaper3 from "./assets/cover/wallpaper1.jpg";
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      active: 0, //Active list item
+      menuItems: ["Now Playing", "Music", "Games", "Settings"], //menu Items
+      musicItems: ["All Songs", "Artist", "Albums"], //Items in music
+      songItemsUrl: [song1, song2, song3, song4], //songs list
+      songImgItemsUrl: [song1Img, song2Img, song3Img, song4Img], //song images list
+      wallpaperItems: [Wallpaper1, Wallpaper2, Wallpaper3], //wallpapers
+      songItems: [
+        "A Girl Like You",
+        "No sleep till brooklyn",
+        "Do Ya Thang",
+        "Rasputin",
+      ], //song names
+      songIndex: 0, //current song
+      lengthMenuKey: { "-1": 3, 1: 2, 4: 4, 8: 4, 3: 2, 9: 3, 10: 2 }, //length of a particular menu
+      menuMapping: { "-1": [0, 1, 2, 3], 1: [4, 5, 6], 3: [8, 9, 10] }, //which menu can be rendered by key menu
+      currentMenu: -2, //current menu which is lockscreen initially
+      navigationStack: [], //Used for navigation forward and backward
+      songUrl: song1, //current song url
+      playing: false, //playing or not
+      theme: "rgb(210, 210, 210)", //current body theme
+      audio: new Audio(song1), //current audio file
+      songImgUrl: song1Img, //current song img for now playing
+      wheelColor: "white", //current wheel color
+      wallpaper: 0, //current wallpaper
+      noty: false, // has to show notification or not
+      notifyText: "Wallpaper Changed", //notification text
+    };
+  }
+
   
+
+  // FUNCTION FOR : RENDERING APP
+  render() {
+    return (
+      <div className="App">
+        
+      </div>
+    );
+  }
 }
 
 export default App;
